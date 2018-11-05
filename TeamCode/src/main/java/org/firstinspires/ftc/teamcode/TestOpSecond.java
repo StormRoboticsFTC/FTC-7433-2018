@@ -29,12 +29,11 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 
 /**
@@ -50,15 +49,30 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
+    /*
+    Notes to self:
+    leftDrive = Motor A0
+    leftDriveTwo = Motor A2
+    rightDrive = Motor A1
+    rightDriveTwo = Motor A4
+    latchingMotor = Motor B0
+    intakeMotor = Motor
+    */
 
-// @TeleOp(name="Test TeleOp Mode", group="Linear Opmode")
-@Disabled
-public class TestOp extends LinearOpMode {
+
+@TeleOp(name="Test TeleOp Mode", group="Linear Opmode")
+//@Disabled
+public class TestOpSecond extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftDrive = null;
-    private DcMotor rightDrive = null;
+    private DcMotor A0 = null;
+    private DcMotor A1 = null;
+    private DcMotor A2 = null;
+    private DcMotor A3 = null;
+    private DcMotor B0 = null;
+    private DcMotor intakeMotor = null;
+
 
     @Override
     public void runOpMode() {
@@ -68,13 +82,21 @@ public class TestOp extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+        A0  = hardwareMap.get(DcMotor.class, "left_drive");
+        A1 = hardwareMap.get(DcMotor.class, "right_drive");
+        A2  = hardwareMap.get(DcMotor.class, "left_drive2");
+        A3 = hardwareMap.get(DcMotor.class, "right_drive2");
+        B0 = hardwareMap.get(DcMotor.class, "latching_motor");
+        intakeMotor = hardwareMap.get(DcMotor.class, "intake_motor");
 
-        // Most robots need the motor on one side to be reversed to drive forward
+                // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
-        leftDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightDrive.setDirection(DcMotor.Direction.REVERSE);
+        A0.setDirection(DcMotor.Direction.REVERSE);
+        A1.setDirection(DcMotor.Direction.FORWARD);
+        A2.setDirection(DcMotor.Direction.REVERSE);
+        A3.setDirection(DcMotor.Direction.FORWARD);
+        B0.setDirection(DcMotor.Direction.FORWARD);
+        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -86,6 +108,10 @@ public class TestOp extends LinearOpMode {
             // Setup a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
+            double latchingPowerForward;
+            double latchingPowerBackward;
+            double intakePowerForward;
+            double intakePowerBackward;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -101,14 +127,26 @@ public class TestOp extends LinearOpMode {
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             leftPower  = -gamepad1.left_stick_y ;
             rightPower = -gamepad1.right_stick_y ;
+            latchingPowerForward = gamepad1.right_trigger;
+            latchingPowerBackward = gamepad1.left_trigger;
+            intakePowerForward = gamepad2.right_trigger;
+            intakePowerBackward = gamepad2.left_trigger;
+
 
             // Send calculated power to wheels
-            leftDrive.setPower(leftPower);
-            rightDrive.setPower(rightPower);
+            A0.setPower(leftPower);
+            A1.setPower(rightPower);
+            A2.setPower(leftPower);
+            A3.setPower(rightPower);
+            B0.setPower(latchingPowerForward - latchingPowerBackward);
+            intakeMotor.setPower(intakePowerForward - intakePowerBackward);
+
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left (%%.+2f), right (%%.2f)", leftPower, rightPower);
+            telemetry.addData("Latching", "" + "(%%.+2f)", latchingPowerForward - latchingPowerBackward);
+            telemetry.addData("Intake", "" + "(%%.+2f)", intakePowerForward - intakePowerBackward);
             telemetry.update();
 
         }
