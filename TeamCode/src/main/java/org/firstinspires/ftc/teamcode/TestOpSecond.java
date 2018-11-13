@@ -32,6 +32,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -71,8 +73,10 @@ public class TestOpSecond extends LinearOpMode {
     private DcMotor A2 = null;
     private DcMotor A3 = null;
     private DcMotor B0 = null;
+    private DcMotor B1 = null;
     private DcMotor intakeMotor = null;
-
+    private DcMotor outakeMotor = null;
+    private Servo outakeServo = null;
 
     @Override
     public void runOpMode() {
@@ -87,7 +91,10 @@ public class TestOpSecond extends LinearOpMode {
         A2  = hardwareMap.get(DcMotor.class, "left_drive2");
         A3 = hardwareMap.get(DcMotor.class, "right_drive2");
         B0 = hardwareMap.get(DcMotor.class, "latching_motor");
+        B1 = hardwareMap.get(DcMotor.class, "latching_motor2");
         intakeMotor = hardwareMap.get(DcMotor.class, "intake_motor");
+        outakeMotor = hardwareMap.get(DcMotor.class, "outake_motor");
+        outakeServo  = hardwareMap.get(Servo.class, "outake_servo");
 
                 // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -96,7 +103,9 @@ public class TestOpSecond extends LinearOpMode {
         A2.setDirection(DcMotor.Direction.REVERSE);
         A3.setDirection(DcMotor.Direction.FORWARD);
         B0.setDirection(DcMotor.Direction.FORWARD);
+        B1.setDirection(DcMotor.Direction.FORWARD);
         intakeMotor.setDirection(DcMotor.Direction.FORWARD);
+        outakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -112,6 +121,9 @@ public class TestOpSecond extends LinearOpMode {
             double latchingPowerBackward;
             double intakePowerForward;
             double intakePowerBackward;
+            double outakePower;
+            boolean outtakeservopower;
+
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -131,6 +143,17 @@ public class TestOpSecond extends LinearOpMode {
             latchingPowerBackward = gamepad1.left_trigger;
             intakePowerForward = gamepad2.right_trigger;
             intakePowerBackward = gamepad2.left_trigger;
+            outakePower = -gamepad2.left_stick_y;
+            outtakeservopower = gamepad2.y;
+
+            if (outtakeservopower) {
+                outakeServo.setPosition(1.0);
+            }else {
+                outakeServo.setPosition(0.0);
+            }
+
+
+
 
 
             // Send calculated power to wheels
@@ -138,8 +161,12 @@ public class TestOpSecond extends LinearOpMode {
             A1.setPower(rightPower);
             A2.setPower(leftPower);
             A3.setPower(rightPower);
+
             B0.setPower(latchingPowerForward - latchingPowerBackward);
+            B1.setPower(latchingPowerForward - latchingPowerBackward);
             intakeMotor.setPower(intakePowerForward - intakePowerBackward);
+            outakeMotor.setPower(outakePower);
+
 
 
             // Show the elapsed game time and wheel power.
@@ -147,6 +174,7 @@ public class TestOpSecond extends LinearOpMode {
             telemetry.addData("Motors", "left (%%.+2f), right (%%.2f)", leftPower, rightPower);
             telemetry.addData("Latching", "" + "(%%.+2f)", latchingPowerForward - latchingPowerBackward);
             telemetry.addData("Intake", "" + "(%%.+2f)", intakePowerForward - intakePowerBackward);
+            telemetry.addData("Outake", "(%%.+2f)", outakePower);
             telemetry.update();
 
         }

@@ -34,6 +34,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+
+
 /**
  * This is NOT an opmode.
  *
@@ -68,6 +70,10 @@ public class HardwareTest
     public DcMotor  A1  = null;
     public DcMotor  A2 = null;
     public DcMotor  A3 = null;
+    public DcMotor  B0 = null;
+    public DcMotor outakeMotor = null;
+    public Servo outakeServo = null;
+
     //public DcMotor  leftArm     = null;
     //public Servo    leftClaw    = null;
     //public Servo    rightClaw   = null;
@@ -95,33 +101,42 @@ public class HardwareTest
         A1 = hwMap.get(DcMotor.class, "right_drive");
         A2  = hwMap.get(DcMotor.class, "left_drive2");
         A3  = hwMap.get(DcMotor.class, "right_drive2");
+        B0  = hwMap.get(DcMotor.class, "latching_motor1");
+        outakeMotor = hwMap.get(DcMotor.class, "outake_motor");
+        outakeServo = hwMap.get(Servo.class, "outake_servo");
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         A0.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         A1.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
         A2.setDirection(DcMotor.Direction.FORWARD);
         A3.setDirection(DcMotor.Direction.REVERSE);
-
+        B0.setDirection(DcMotor.Direction.FORWARD);
+        outakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
         A0.setPower(0);
         A1.setPower(0);
         A2.setPower(0);
         A3.setPower(0);
+        B0.setPower(0);
+        outakeMotor.setPower(0);
+
         //leftArm.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        A0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        A1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        A2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        A3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        A0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        A1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        A2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        A3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        B0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        outakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-        //leftClaw  = hwMap.get(Servo.class, "left_hand");
+        // leftClaw  = hwMap.get(Servo.class, "left_hand");
         //rightClaw = hwMap.get(Servo.class, "right_hand");
         //leftClaw.setPosition(MID_SERVO);
-        //rightClaw.setPosition(MID_SERVO);
+        // rightClaw.setPosition(MID_SERVO);
     }
  }
 
