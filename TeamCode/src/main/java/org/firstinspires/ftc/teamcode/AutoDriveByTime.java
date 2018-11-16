@@ -58,7 +58,7 @@ import org.firstinspires.ftc.teamcode.HardwareTest;
  */
 
 @Autonomous(name="Pushbot: Auto Drive By Time", group="Pushbot")
-@Disabled
+//Disabled
 public class AutoDriveByTime extends LinearOpMode {
 
     /* Declare OpMode members. */
@@ -87,9 +87,20 @@ public class AutoDriveByTime extends LinearOpMode {
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
-        // Step 1:  Drive forward for 3 seconds
+        // Step 1:  Unlatch
+        robot.B2.setPower(0.3);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+
+
+
+        /*
         robot.A0.setPower(FORWARD_SPEED);
         robot.A1.setPower(FORWARD_SPEED);
+        robot.A2.setPower(FORWARD_SPEED);
+        robot.A3.setPower(FORWARD_SPEED);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
@@ -119,9 +130,10 @@ public class AutoDriveByTime extends LinearOpMode {
         robot.A1.setPower(0);
         // robot.leftClaw.setPosition(1.0);
         // robot.rightClaw.setPosition(0.0);
+        */
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
     }
-}
+}}

@@ -56,12 +56,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 /* Notes to self:
-        leftDrive = Motor A0
-        leftDriveTwo = Motor A2
-        rightDrive = Motor A1
-        rightDriveTwo = Motor A4
-        latchingMotor = Motor B0
-        intakeMotor = Motor
+    leftDrive = Motor A0
+    leftDriveTwo = Motor A2
+    rightDrive = Motor A1
+    rightDriveTwo = Motor A4
+    outakeMotor = Motor B0
+    intakeMotor = Motor B1
+    latchingMotor = Motor B2
         */
 public class HardwareTest
 {
@@ -71,7 +72,7 @@ public class HardwareTest
     public DcMotor  A2 = null;
     public DcMotor  A3 = null;
     public DcMotor  B0 = null;
-    public DcMotor outakeMotor = null;
+    public DcMotor  B2 = null;
     public Servo outakeServo = null;
 
     //public DcMotor  leftArm     = null;
@@ -101,8 +102,8 @@ public class HardwareTest
         A1 = hwMap.get(DcMotor.class, "right_drive");
         A2  = hwMap.get(DcMotor.class, "left_drive2");
         A3  = hwMap.get(DcMotor.class, "right_drive2");
-        B0  = hwMap.get(DcMotor.class, "latching_motor1");
-        outakeMotor = hwMap.get(DcMotor.class, "outake_motor");
+        B0  = hwMap.get(DcMotor.class, "outake_motor");
+        B2 = hwMap.get(DcMotor.class, "latching_motor");
         outakeServo = hwMap.get(Servo.class, "outake_servo");
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         A0.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
@@ -110,7 +111,7 @@ public class HardwareTest
         A2.setDirection(DcMotor.Direction.FORWARD);
         A3.setDirection(DcMotor.Direction.REVERSE);
         B0.setDirection(DcMotor.Direction.FORWARD);
-        outakeMotor.setDirection(DcMotor.Direction.FORWARD);
+        B2.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
         A0.setPower(0);
@@ -118,7 +119,7 @@ public class HardwareTest
         A2.setPower(0);
         A3.setPower(0);
         B0.setPower(0);
-        outakeMotor.setPower(0);
+        B2.setPower(0);
 
         //leftArm.setPower(0);
 
@@ -129,7 +130,7 @@ public class HardwareTest
         A2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         A3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         B0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        outakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        B2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.

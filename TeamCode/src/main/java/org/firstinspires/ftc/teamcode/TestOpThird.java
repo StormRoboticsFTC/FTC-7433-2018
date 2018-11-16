@@ -33,8 +33,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
@@ -63,9 +61,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
     */
 
 
-//@TeleOp(name="Test TeleOp Mode", group="Linear Opmode")
+@TeleOp(name="Test TeleOp Mode", group="Linear Opmode")
 //@Disabled
-public class TestOpSecond extends LinearOpMode {
+public class TestOpThird extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -137,10 +135,10 @@ public class TestOpSecond extends LinearOpMode {
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             leftPower  = -gamepad1.left_stick_y ;
             rightPower = -gamepad1.right_stick_y ;
-            latchingPowerForward = gamepad1.right_trigger;
-            latchingPowerBackward = gamepad1.left_trigger;
-            intakePowerForward = gamepad2.right_trigger;
-            intakePowerBackward = gamepad2.left_trigger;
+            latchingPowerForward = gamepad2.right_trigger;
+            latchingPowerBackward = gamepad2.left_trigger;
+            intakePowerForward = gamepad1.right_trigger;
+            intakePowerBackward = gamepad1.left_trigger;
             outakePower = -gamepad2.left_stick_y;
             outtakeservopower = gamepad2.y;
 
