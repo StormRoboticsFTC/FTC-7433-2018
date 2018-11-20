@@ -108,15 +108,15 @@ public class AutoDriveByEncoder extends LinearOpMode {
         robot.A1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.A2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.A3.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.B0.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.B0.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.B2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         robot.A0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.A1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.A2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.A3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.B0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.B0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //robot.B0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //robot.B0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d",

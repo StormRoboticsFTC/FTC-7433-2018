@@ -71,9 +71,9 @@ public class HardwareTest
     public DcMotor  A1  = null;
     public DcMotor  A2 = null;
     public DcMotor  A3 = null;
-    public DcMotor  B0 = null;
+    //public DcMotor  B0 = null;
     public DcMotor  B2 = null;
-    public Servo outakeServo = null;
+    //public Servo outakeServo = null;
 
     //public DcMotor  leftArm     = null;
     //public Servo    leftClaw    = null;
@@ -102,15 +102,15 @@ public class HardwareTest
         A1 = hwMap.get(DcMotor.class, "right_drive");
         A2  = hwMap.get(DcMotor.class, "left_drive2");
         A3  = hwMap.get(DcMotor.class, "right_drive2");
-        B0  = hwMap.get(DcMotor.class, "outake_motor");
+        //B0  = hwMap.get(DcMotor.class, "outake_motor");
         B2 = hwMap.get(DcMotor.class, "latching_motor");
-        outakeServo = hwMap.get(Servo.class, "outake_servo");
+        //outakeServo = hwMap.get(Servo.class, "outake_servo");
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
-        A0.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        A1.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
-        A2.setDirection(DcMotor.Direction.FORWARD);
-        A3.setDirection(DcMotor.Direction.REVERSE);
-        B0.setDirection(DcMotor.Direction.FORWARD);
+        A0.setDirection(DcMotor.Direction.REVERSE);
+        A1.setDirection(DcMotor.Direction.FORWARD);
+        A2.setDirection(DcMotor.Direction.REVERSE);
+        A3.setDirection(DcMotor.Direction.FORWARD);
+        //B0.setDirection(DcMotor.Direction.FORWARD);
         B2.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
@@ -118,7 +118,7 @@ public class HardwareTest
         A1.setPower(0);
         A2.setPower(0);
         A3.setPower(0);
-        B0.setPower(0);
+        //B0.setPower(0);
         B2.setPower(0);
 
         //leftArm.setPower(0);
@@ -129,7 +129,7 @@ public class HardwareTest
         A1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         A2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         A3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        B0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //B0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         B2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 

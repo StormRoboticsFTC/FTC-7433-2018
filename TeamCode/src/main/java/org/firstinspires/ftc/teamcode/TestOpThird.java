@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -71,10 +72,10 @@ public class TestOpThird extends LinearOpMode {
     private DcMotor A1 = null;
     private DcMotor A2 = null;
     private DcMotor A3 = null;
-    private DcMotor B0 = null;
+    //private DcMotor B0 = null;
     private DcMotor B1 = null;
     private DcMotor B2 = null;
-    private Servo outakeServo = null;
+    //private Servo outakeServo = null;
 
     @Override
     public void runOpMode() {
@@ -88,10 +89,10 @@ public class TestOpThird extends LinearOpMode {
         A1 = hardwareMap.get(DcMotor.class, "right_drive");
         A2  = hardwareMap.get(DcMotor.class, "left_drive2");
         A3 = hardwareMap.get(DcMotor.class, "right_drive2");
-        B0 = hardwareMap.get(DcMotor.class, "outake_motor");
+        //B0 = hardwareMap.get(DcMotor.class, "outake_motor");
         B1 = hardwareMap.get(DcMotor.class, "intake_motor");
         B2 = hardwareMap.get(DcMotor.class, "latching_motor");
-        outakeServo  = hardwareMap.get(Servo.class, "outake_servo");
+        //outakeServo  = hardwareMap.get(Servo.class, "outake_servo");
 
                 // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -99,7 +100,7 @@ public class TestOpThird extends LinearOpMode {
         A1.setDirection(DcMotor.Direction.FORWARD);
         A2.setDirection(DcMotor.Direction.REVERSE);
         A3.setDirection(DcMotor.Direction.FORWARD);
-        B0.setDirection(DcMotor.Direction.FORWARD);
+        //B0.setDirection(DcMotor.Direction.FORWARD);
         B1.setDirection(DcMotor.Direction.FORWARD);
         B2.setDirection(DcMotor.Direction.FORWARD);
 
@@ -117,8 +118,8 @@ public class TestOpThird extends LinearOpMode {
             double latchingPowerBackward;
             double intakePowerForward;
             double intakePowerBackward;
-            double outakePower;
-            boolean outtakeservopower;
+            //double outakePower;
+            //boolean outtakeservopower;
 
 
             // Choose to drive using either Tank Mode, or POV Mode
@@ -139,26 +140,25 @@ public class TestOpThird extends LinearOpMode {
             latchingPowerBackward = gamepad2.left_trigger;
             intakePowerForward = gamepad1.right_trigger;
             intakePowerBackward = gamepad1.left_trigger;
-            outakePower = -gamepad2.left_stick_y;
-            outtakeservopower = gamepad2.y;
-
+            //outakePower = -gamepad2.left_stick_y;
+            //outtakeservopower = gamepad2.y;
+/*
             if (outtakeservopower) {
                 outakeServo.setPosition(1.0);
             }else {
                 outakeServo.setPosition(0.0);
             }
-
+*/
 
 
 
 
             // Send calculated power to wheels
-            A0.setPower(leftPower);
-            A1.setPower(rightPower);
-            A2.setPower(leftPower);
-            A3.setPower(rightPower);
-
-            B0.setPower(outakePower);
+            A0.setPower(0.4 * leftPower);
+            A1.setPower(0.4 * rightPower);
+            A2.setPower(0.4 * leftPower);
+            A3.setPower(0.4 * rightPower);
+            //B0.setPower(outakePower);
             B1.setPower(intakePowerForward - intakePowerBackward);
             B2.setPower(latchingPowerForward - latchingPowerBackward);
 
@@ -170,7 +170,7 @@ public class TestOpThird extends LinearOpMode {
             telemetry.addData("Motors", "left (%%.+2f), right (%%.2f)", leftPower, rightPower);
             telemetry.addData("Latching", "" + "(%%.+2f)", latchingPowerForward - latchingPowerBackward);
             telemetry.addData("Intake", "" + "(%%.+2f)", intakePowerForward - intakePowerBackward);
-            telemetry.addData("Outake", "(%%.+2f)", outakePower);
+            //telemetry.addData("Outake", "(%%.+2f)", outakePower);
             telemetry.update();
 
         }

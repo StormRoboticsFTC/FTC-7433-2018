@@ -70,6 +70,7 @@ public class AutoDriveByTime extends LinearOpMode {
     static final double     TURN_SPEED    = 0.5;
 
     @Override
+
     public void runOpMode() {
 
         /*
@@ -87,35 +88,90 @@ public class AutoDriveByTime extends LinearOpMode {
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
+
         // Step 1:  Unlatch
-        robot.B2.setPower(0.3);
+        robot.B2.setPower(0.8);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
-            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
+        while (opModeIsActive() && (runtime.seconds() < 2)) {
+            //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            //telemetry.update();
+        }
+        
+        robot.B2.setPower(0);
+        sleep(1000);
 
 
 
-        /*
-        robot.A0.setPower(FORWARD_SPEED);
-        robot.A1.setPower(FORWARD_SPEED);
-        robot.A2.setPower(FORWARD_SPEED);
-        robot.A3.setPower(FORWARD_SPEED);
+        robot.A0.setPower(TURN_SPEED);
+        robot.A1.setPower(-TURN_SPEED);
+        robot.A2.setPower(TURN_SPEED);
+        robot.A3.setPower(-TURN_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
-        // Step 2:  Spin right for 1.3 seconds
-        robot.A0.setPower(TURN_SPEED);
-        robot.A1.setPower(-TURN_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        sleep(1000);
+
+        // Step 2:
+            robot.A0.setPower(0.5);
+            robot.A1.setPower(0.5);
+            robot.A2.setPower(0.5);
+            robot.A3.setPower(0.5);
+            runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.7)) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
+                 robot.A0.setPower(0);
+                 robot.A1.setPower(0);
+                 robot.A2.setPower(0);
+                 robot.A3.setPower(0);
+                 sleep(1000);
+
+
+
+
+
+            robot.A0.setPower(-0.4);
+            robot.A1.setPower(0.4);
+            robot.A2.setPower(-0.4);
+            robot.A3.setPower(0.4);
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 0.3)) {
+                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+                telemetry.update();
+            }
+
+                       robot.A0.setPower(0);
+                       robot.A1.setPower(0);
+                       robot.A2.setPower(0);
+                       robot.A3.setPower(0);
+                       sleep(1000);
+
+
+            robot.A0.setPower(0.6);
+            robot.A1.setPower(0.6);
+            robot.A2.setPower(0.6);
+            robot.A3.setPower(0.6);
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 3.5)) {
+                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+                telemetry.update();
+            }
+
+
+
+
+
+            
+/*
         // Step 3:  Drive Backwards for 1 Second
         robot.A0.setPower(-FORWARD_SPEED);
         robot.A1.setPower(-FORWARD_SPEED);
@@ -131,9 +187,13 @@ public class AutoDriveByTime extends LinearOpMode {
         // robot.leftClaw.setPosition(1.0);
         // robot.rightClaw.setPosition(0.0);
         */
-
+        
         telemetry.addData("Path", "Complete");
         telemetry.update();
+
         sleep(1000);
-    }
-}}
+
+}
+
+}
+
