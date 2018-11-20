@@ -92,20 +92,19 @@ public class AutoDriveByTime extends LinearOpMode {
         // Step 1:  Unlatch
         robot.B2.setPower(0.8);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 2)) {
+        while (opModeIsActive() && (runtime.seconds() < 3)) {
             //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             //telemetry.update();
         }
+
         
         robot.B2.setPower(0);
         sleep(1000);
 
-
-
-        robot.A0.setPower(TURN_SPEED);
-        robot.A1.setPower(-TURN_SPEED);
-        robot.A2.setPower(TURN_SPEED);
-        robot.A3.setPower(-TURN_SPEED);
+        robot.A0.setPower(-TURN_SPEED);
+        robot.A1.setPower(TURN_SPEED);
+        robot.A2.setPower(-TURN_SPEED);
+        robot.A3.setPower(TURN_SPEED);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 0.5)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
@@ -118,13 +117,27 @@ public class AutoDriveByTime extends LinearOpMode {
         robot.A3.setPower(0);
         sleep(1000);
 
+
+        robot.B2.setPower(-0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 3)) {
+            //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            //telemetry.update();
+        }
+
+
+        robot.B2.setPower(0);
+        sleep(1000);
+
+
+
         // Step 2:
-            robot.A0.setPower(0.5);
-            robot.A1.setPower(0.5);
-            robot.A2.setPower(0.5);
-            robot.A3.setPower(0.5);
+            robot.A0.setPower(-0.5);
+            robot.A1.setPower(-0.5);
+            robot.A2.setPower(-0.5);
+            robot.A3.setPower(-0.5);
             runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 0.7)) {
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
@@ -139,12 +152,12 @@ public class AutoDriveByTime extends LinearOpMode {
 
 
 
-            robot.A0.setPower(-0.4);
-            robot.A1.setPower(0.4);
-            robot.A2.setPower(-0.4);
-            robot.A3.setPower(0.4);
+            robot.A0.setPower(0.4);
+            robot.A1.setPower(-0.4);
+            robot.A2.setPower(0.4);
+            robot.A3.setPower(-0.4);
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 0.3)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.1)) {
                 telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
             }
