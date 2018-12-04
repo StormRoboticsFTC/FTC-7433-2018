@@ -98,7 +98,7 @@ public class TestOpThird extends LinearOpMode {
         // Reverse the motor that runs backwards when connected directly to the battery
         A0.setDirection(DcMotor.Direction.REVERSE);
         A1.setDirection(DcMotor.Direction.FORWARD);
-        A2.setDirection(DcMotor.Direction.REVERSE);
+        A2.setDirection(DcMotor.Direction.FORWARD);
         A3.setDirection(DcMotor.Direction.FORWARD);
         //B0.setDirection(DcMotor.Direction.FORWARD);
         B1.setDirection(DcMotor.Direction.FORWARD);
@@ -154,10 +154,10 @@ public class TestOpThird extends LinearOpMode {
 
 
             // Send calculated power to wheels
-            A0.setPower(0.4 * leftPower);
-            A1.setPower(0.4 * rightPower);
-            A2.setPower(0.4 * leftPower);
-            A3.setPower(0.4 * rightPower);
+            A0.setPower(0.6 * leftPower);
+            A1.setPower(0.6 * rightPower);
+            A2.setPower(0.6 * leftPower);
+            A3.setPower(0.6 * rightPower);
             //B0.setPower(outakePower);
             B1.setPower(-intakePowerBackward);
             B2.setPower(latchingPowerForward - latchingPowerBackward);

@@ -110,7 +110,7 @@ public class HardwareTest
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         A0.setDirection(DcMotor.Direction.REVERSE);
         A1.setDirection(DcMotor.Direction.FORWARD);
-        A2.setDirection(DcMotor.Direction.REVERSE);
+        A2.setDirection(DcMotor.Direction.FORWARD);
         A3.setDirection(DcMotor.Direction.FORWARD);
         //B0.setDirection(DcMotor.Direction.FORWARD);
         B1.setDirection(DcMotor.Direction.REVERSE);

@@ -89,7 +89,7 @@ public class AutoDriveByTimeDepot extends LinearOpMode {
         // Step 1:  Unlatch
         robot.B2.setPower(0.8);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 2.9)) {
+        while (opModeIsActive() && (runtime.seconds() < 2.95)) {
             //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             //telemetry.update();
         }
@@ -98,9 +98,9 @@ public class AutoDriveByTimeDepot extends LinearOpMode {
         robot.B2.setPower(0);
         sleep(1000);
 
-        robot.A0.setPower(-TURN_SPEED);
+        robot.A0.setPower(-0.5);
         robot.A1.setPower(TURN_SPEED);
-        robot.A2.setPower(-TURN_SPEED);
+        robot.A2.setPower(-0.5);
         robot.A3.setPower(TURN_SPEED);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 0.7)) {
@@ -154,7 +154,7 @@ public class AutoDriveByTimeDepot extends LinearOpMode {
             robot.A2.setPower(0.4);
             robot.A3.setPower(-0.4);
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1.6)) {
+            while (opModeIsActive() && (runtime.seconds() < 1.2)) {
                 telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
             }
@@ -171,7 +171,7 @@ public class AutoDriveByTimeDepot extends LinearOpMode {
             robot.A2.setPower(0.4);
             robot.A3.setPower(0.4);
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1.8)) {
+            while (opModeIsActive() && (runtime.seconds() < 1.0)) {
                 telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
             }
@@ -191,7 +191,25 @@ public class AutoDriveByTimeDepot extends LinearOpMode {
             telemetry.update();
         }
 
-            
+        robot.A0.setPower(0.4);
+        robot.A1.setPower(-0.4);
+        robot.A2.setPower(0.4);
+        robot.A3.setPower(-0.4);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.4)) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.A0.setPower(0.4);
+        robot.A1.setPower(0.4);
+        robot.A2.setPower(0.4);
+        robot.A3.setPower(0.4);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.4)) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
 /*
         // Step 3:  Drive Backwards for 1 Second
         robot.A0.setPower(-FORWARD_SPEED);
