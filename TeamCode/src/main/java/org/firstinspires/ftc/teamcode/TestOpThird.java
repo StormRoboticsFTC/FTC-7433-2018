@@ -159,7 +159,7 @@ public class TestOpThird extends LinearOpMode {
             A2.setPower(0.4 * leftPower);
             A3.setPower(0.4 * rightPower);
             //B0.setPower(outakePower);
-            B1.setPower(intakePowerForward - intakePowerBackward);
+            B1.setPower(-intakePowerBackward);
             B2.setPower(latchingPowerForward - latchingPowerBackward);
 
 

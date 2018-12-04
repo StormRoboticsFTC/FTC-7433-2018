@@ -30,11 +30,8 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import org.firstinspires.ftc.teamcode.HardwareTest;
 
 /**
  * This file illustrates the concept of driving a path based on time.
@@ -57,9 +54,9 @@ import org.firstinspires.ftc.teamcode.HardwareTest;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-//@Autonomous(name="Pushbot: Auto Drive By Time", group="Pushbot")
-@Disabled
-public class AutoDriveByTime extends LinearOpMode {
+@Autonomous(name="Pushbot: Auto Drive By Time", group="Pushbot")
+//Disabled
+public class AutoDriveByTimeDepot extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareTest         robot   = new HardwareTest();   // Use a Pushbot's hardware
@@ -92,7 +89,7 @@ public class AutoDriveByTime extends LinearOpMode {
         // Step 1:  Unlatch
         robot.B2.setPower(0.8);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.2)) {
+        while (opModeIsActive() && (runtime.seconds() < 3)) {
             //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             //telemetry.update();
         }
@@ -106,7 +103,7 @@ public class AutoDriveByTime extends LinearOpMode {
         robot.A2.setPower(-TURN_SPEED);
         robot.A3.setPower(TURN_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
+        while (opModeIsActive() && (runtime.seconds() < 0.7)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
@@ -157,7 +154,7 @@ public class AutoDriveByTime extends LinearOpMode {
             robot.A2.setPower(0.4);
             robot.A3.setPower(-0.4);
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 2.1)) {
+            while (opModeIsActive() && (runtime.seconds() < 1.6)) {
                 telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
             }
@@ -174,14 +171,25 @@ public class AutoDriveByTime extends LinearOpMode {
             robot.A2.setPower(0.4);
             robot.A3.setPower(0.4);
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1.5)) {
+            while (opModeIsActive() && (runtime.seconds() < 1.8)) {
                 telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
             }
 
 
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        sleep(1000);
 
 
+        robot.B1.setPower(-0.5);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
 
             
 /*

@@ -72,6 +72,7 @@ public class HardwareTest
     public DcMotor  A2 = null;
     public DcMotor  A3 = null;
     //public DcMotor  B0 = null;
+    public DcMotor B1 = null;
     public DcMotor  B2 = null;
     //public Servo outakeServo = null;
 
@@ -103,6 +104,7 @@ public class HardwareTest
         A2  = hwMap.get(DcMotor.class, "left_drive2");
         A3  = hwMap.get(DcMotor.class, "right_drive2");
         //B0  = hwMap.get(DcMotor.class, "outake_motor");
+        B1 = hwMap.get(DcMotor.class, "intake_motor");
         B2 = hwMap.get(DcMotor.class, "latching_motor");
         //outakeServo = hwMap.get(Servo.class, "outake_servo");
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
@@ -111,6 +113,7 @@ public class HardwareTest
         A2.setDirection(DcMotor.Direction.REVERSE);
         A3.setDirection(DcMotor.Direction.FORWARD);
         //B0.setDirection(DcMotor.Direction.FORWARD);
+        B1.setDirection(DcMotor.Direction.REVERSE);
         B2.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
@@ -119,6 +122,7 @@ public class HardwareTest
         A2.setPower(0);
         A3.setPower(0);
         //B0.setPower(0);
+        B1.setPower(0);
         B2.setPower(0);
 
         //leftArm.setPower(0);
@@ -130,6 +134,7 @@ public class HardwareTest
         A2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         A3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //B0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        B1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         B2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
