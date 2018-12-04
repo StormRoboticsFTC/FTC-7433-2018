@@ -89,7 +89,7 @@ public class AutoDriveByTimeDepot extends LinearOpMode {
         // Step 1:  Unlatch
         robot.B2.setPower(0.8);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3)) {
+        while (opModeIsActive() && (runtime.seconds() < 2.9)) {
             //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             //telemetry.update();
         }
