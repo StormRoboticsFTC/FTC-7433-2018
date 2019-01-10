@@ -57,11 +57,13 @@ import org.firstinspires.ftc.teamcode.HardwareTest;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-//@Autonomous(name="Pushbot: Auto Drive By Time", group="Pushbot")
-@Disabled
+@Autonomous(name="Pushbot: Auto Drive By Time Parking Only", group="Pushbot")
+//@Disabled
 public class AutoDriveByTime extends LinearOpMode {
 
-    /* Declare OpMode members. */
+        //power values at full battery
+    
+   /* Declare OpMode members. */
     HardwareTest         robot   = new HardwareTest();   // Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
 
@@ -88,25 +90,24 @@ public class AutoDriveByTime extends LinearOpMode {
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
-
-        // Step 1:  Unlatch
-        robot.B2.setPower(0.8);
+        sleep(1100);
+        robot.B2.setPower(0.7);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.2)) {
+        while (opModeIsActive() && (runtime.seconds() < 2.8)) {
             //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             //telemetry.update();
         }
 
-        
-        robot.B2.setPower(0);
-        sleep(1000);
 
-        robot.A0.setPower(-TURN_SPEED);
+        robot.B2.setPower(0);
+        //sleep(1000);
+
+        robot.A0.setPower(-0.4);
         robot.A1.setPower(TURN_SPEED);
-        robot.A2.setPower(-TURN_SPEED);
+        robot.A2.setPower(-0.4);
         robot.A3.setPower(TURN_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
+        while (opModeIsActive() && (runtime.seconds() < 0.45)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
@@ -115,97 +116,193 @@ public class AutoDriveByTime extends LinearOpMode {
         robot.A1.setPower(0);
         robot.A2.setPower(0);
         robot.A3.setPower(0);
-        sleep(1000);
+        //sleep(1000);
 
 
-        robot.B2.setPower(-0.8);
+
+        robot.B2.setPower(-0.7);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3)) {
+        while (opModeIsActive() && (runtime.seconds() < 2.8)) {
+            //telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            //telemetry.update();
+        }
+
+        robot.B2.setPower(0);
+        //sleep(1000);
+
+
+
+        // Step 2:
+        robot.A0.setPower(-0.4);
+        robot.A1.setPower(-0.4);
+        robot.A2.setPower(-0.4);
+        robot.A3.setPower(-0.4);
+        //robot.B2.setPower(-0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.0)) {
+            //telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            //telemetry.update();
+        }
+
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        //sleep(1000);
+
+        // 2.9 - 0.35 = 2.55
+
+
+
+        robot.A0.setPower(0.3);
+        robot.A1.setPower(-03);
+        robot.A2.setPower(0.3);
+        robot.A3.setPower(-0.3);
+        //robot.B2.setPower(-0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.4)) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        //sleep(1000);
+
+        // 2.9 - 0.35 = 2.55
+        // 2.55 - 1.2 = 1.35
+
+        //speed
+        robot.A0.setPower(0.3);
+        robot.A1.setPower(0.3);
+        robot.A2.setPower(0.3);
+        robot.A3.setPower(0.3);
+        //robot.B2.setPower(-0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.5)) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        /*
+        // Step 1:  Unlatch
+        robot.B2.setPower(0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2.9)) {
             //telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             //telemetry.update();
         }
 
 
         robot.B2.setPower(0);
-        sleep(1000);
+        //sleep(1000);
+
+        robot.A0.setPower(-0.5);
+        robot.A1.setPower(TURN_SPEED);
+        robot.A2.setPower(-0.5);
+        robot.A3.setPower(TURN_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.4)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+        */
+        /*
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        //sleep(1000);
+
+
+
+        robot.B2.setPower(-0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2.9)) {
+            //telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            //telemetry.update();
+        }
+
+        robot.B2.setPower(0);
+        //sleep(1000);
 
 
 
         // Step 2:
-            robot.A0.setPower(-0.5);
-            robot.A1.setPower(-0.5);
-            robot.A2.setPower(-0.5);
-            robot.A3.setPower(-0.5);
-            runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+        robot.A0.setPower(-0.5);
+        robot.A1.setPower(-0.5);
+        robot.A2.setPower(-0.5);
+        robot.A3.setPower(-0.5);
+        //robot.B2.setPower(-0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.35)) {
+            //telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            //telemetry.update();
+        }
+
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        //sleep(1000);
+
+        // 2.9 - 0.35 = 2.55
+
+
+
+        robot.A0.setPower(0.4);
+        robot.A1.setPower(-0.4);
+        robot.A2.setPower(0.4);
+        robot.A3.setPower(-0.4);
+        //robot.B2.setPower(-0.8);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.2)) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
-                 robot.A0.setPower(0);
-                 robot.A1.setPower(0);
-                 robot.A2.setPower(0);
-                 robot.A3.setPower(0);
-                 sleep(1000);
+        robot.A0.setPower(0);
+        robot.A1.setPower(0);
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        //sleep(1000);
 
+        // 2.9 - 0.35 = 2.55
+        // 2.55 - 1.2 = 1.35
 
-
-
-
-            robot.A0.setPower(0.4);
-            robot.A1.setPower(-0.4);
-            robot.A2.setPower(0.4);
-            robot.A3.setPower(-0.4);
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 2.1)) {
-                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-                telemetry.update();
-            }
-
-                       robot.A0.setPower(0);
-                       robot.A1.setPower(0);
-                       robot.A2.setPower(0);
-                       robot.A3.setPower(0);
-                       sleep(1000);
-
-
-            robot.A0.setPower(0.4);
-            robot.A1.setPower(0.4);
-            robot.A2.setPower(0.4);
-            robot.A3.setPower(0.4);
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1.5)) {
-                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-                telemetry.update();
-            }
-
-
-
-
-
-            
-/*
-        // Step 3:  Drive Backwards for 1 Second
-        robot.A0.setPower(-FORWARD_SPEED);
-        robot.A1.setPower(-FORWARD_SPEED);
+        //speed
+        robot.A0.setPower(0.4);
+        robot.A1.setPower(0.4);
+        robot.A2.setPower(0.4);
+        robot.A3.setPower(0.4);
+        //robot.B2.setPower(-0.8);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
+        while (opModeIsActive() && (runtime.seconds() < 1.2)) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
-        // Step 4:  Stop and close the claw.
         robot.A0.setPower(0);
         robot.A1.setPower(0);
-        // robot.leftClaw.setPosition(1.0);
-        // robot.rightClaw.setPosition(0.0);
-        */
+        robot.A2.setPower(0);
+        robot.A3.setPower(0);
+        //sleep(1000);
+
+        //2.9 - 0.35 = 2.55
+        // 2.55 - 1.2 = 1.35
+        // 1.35 - 0.9 = 0.45
         
         telemetry.addData("Path", "Complete");
         telemetry.update();
 
         sleep(1000);
-
+*/
 }
 
 }
